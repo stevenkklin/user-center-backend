@@ -98,8 +98,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.linchao.usercenter.UsercenterApplication</mainClass>
-                    <skip>true</skip>
+                    <mainClass>com.linchao.usercenter.UserCenterApplication</mainClass>
+<!--                    <skip>true</skip>-->
                 </configuration>
                 <executions>
                     <execution>
