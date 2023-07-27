@@ -47,7 +47,6 @@ public class User implements Serializable {
 
     /**
      * 电话
-
      */
     private String phone;
 
@@ -60,6 +59,11 @@ public class User implements Serializable {
      * 邮箱
      */
     private String email;
+
+    /**
+     * 标签列表 json
+     */
+    private String tags;
 
     /**
      * 创建时间

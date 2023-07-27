@@ -1,11 +1,15 @@
 package com.linchao.usercenter.service;
 
 import com.linchao.usercenter.model.domain.User;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -65,7 +69,12 @@ class UserServiceTest {
         userAccount = "yupi";
         result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
         Assertions.assertEquals(-1, result);
+    }
 
-
+    @Test
+    void searchUserByTags() {
+        List<String> list = Arrays.asList("c++");
+        List<User> userList = userService.searchUserByTags(list);
+        Assert.assertNotNull(userList);
     }
 }
