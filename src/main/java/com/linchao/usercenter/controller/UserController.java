@@ -10,6 +10,7 @@ import com.linchao.usercenter.model.domain.request.UserLoginRequest;
 import com.linchao.usercenter.model.domain.request.UserRegisterRequest;
 import com.linchao.usercenter.service.UserService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

@@ -9,3 +9,6 @@ spring:
     timeout: 86400
 server:
   address: 0.0.0.0
+
+#knife4j:
+#  enable: false

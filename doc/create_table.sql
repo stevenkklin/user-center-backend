@@ -44,3 +44,20 @@ create table tag
 create index idx_userId
     on tag (userId);
 
+
+CREATE TABLE `tag` (
+                       `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+                       `tagName` varchar(256) DEFAULT NULL COMMENT '标签名称',
+                       `userId` varchar(256) DEFAULT NULL COMMENT '用户 id\r\n',
+                       `parentId` varchar(256) DEFAULT NULL COMMENT '父标签 id',
+                       `isParent` tinyint(4) DEFAULT NULL COMMENT '0 - 不是, 1 - 父标签',
+                       `createTime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                       `updateTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                       `isDelete` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否删除',
+                       PRIMARY KEY (`id`),
+                       UNIQUE KEY `uniIdx_tagName` (`tagName`),
+                       KEY `idx_userId` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='标签'
+
+
+
