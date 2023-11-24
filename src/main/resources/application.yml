@@ -5,15 +5,21 @@ spring:
     name: user-center
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/usercenter
-    username: root
-    password: root
+    url: jdbc:mysql://rm-cn-x0r3dffls000jido.rwlb.rds.aliyuncs.com:3306/usercenter
+    username: lixing
+    password: Li200071
     # session 失效时间
   session:
     timeout: 86400
+    store-type: redis
   mvc:
     path match:
       matching-strategy: ant_path_matcher
+  redis:
+    database: 2
+    host: r-bp15ybgggyheamxvebpd.redis.rds.aliyuncs.com
+    port: 6379
+    password: Li200071
 server:
   port: 8080
   servlet:
