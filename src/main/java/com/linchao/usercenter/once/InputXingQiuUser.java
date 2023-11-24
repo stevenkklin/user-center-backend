@@ -25,6 +25,7 @@ public class InputXingQiuUser {
      */
     public static void synchronousRead(String fileName) {
         List<XingQiuTableUserInfo> userInfoList = EasyExcel.read(fileName).head(XingQiuTableUserInfo.class).sheet().doReadSync();
+        System.out.println("userInfoList" + userInfoList);
         System.out.println("总数 = " + userInfoList.size());
         Map<String, List<XingQiuTableUserInfo>> listMap =
                 userInfoList
