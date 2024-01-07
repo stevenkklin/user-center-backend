@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: 'jdbc:mysql://rm-cn-zxu3a5nab0006vho.rwlb.rds.aliyuncs.com:3306/user_center'
+    url: 'jdbc:mysql://rm-cn-zxu3a5nab0006vho.rwlb.rds.aliyuncs.com:3306/test'
     username: linchao
     password: Ll0606066
     # session 失效时间

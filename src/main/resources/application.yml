@@ -5,9 +5,9 @@ spring:
     name: user-center
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://rm-cn-x0r3dffls000jido.rwlb.rds.aliyuncs.com:3306/usercenter
-    username: lixing
-    password: Li200071
+    url: jdbc:mysql://localhost:3306/usercenter
+    username: root
+    password: root
     # session 失效时间
   session:
     timeout: 86400
@@ -17,13 +17,16 @@ spring:
       matching-strategy: ant_path_matcher
   redis:
     database: 2
-    host: r-bp15ybgggyheamxvebpd.redis.rds.aliyuncs.com
+    host: 47.99.134.153
     port: 6379
-    password: Li200071
+    password: ningzaichun
 server:
   port: 8080
   servlet:
     context-path: /api
+    session:
+      cookie:
+        domain: localhost
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
@@ -33,7 +36,6 @@ mybatis-plus:
       logic-delete-field: isDelete # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
-
 
 #knife4j:
 #  enable: true
