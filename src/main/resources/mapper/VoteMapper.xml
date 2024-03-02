@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.mapper.VoteMapper">
+<mapper namespace="com.linchao.usercenter.mapper.VoteMapper">
 
-    <resultMap id="BaseResultMap" type="generator.domain.Vote">
+    <resultMap id="BaseResultMap" type="com.linchao.usercenter.model.domain.Vote">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="userStatus" column="userStatus" jdbcType="INTEGER"/>
             <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>

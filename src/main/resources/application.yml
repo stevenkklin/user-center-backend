@@ -16,17 +16,17 @@ spring:
     path match:
       matching-strategy: ant_path_matcher
   redis:
-    database: 2
-    host: 47.99.134.153
+    database: 1
+    host: 47.122.42.174
     port: 6379
-    password: ningzaichun
+    password: ocean
 server:
   port: 8080
   servlet:
     context-path: /api
     session:
       cookie:
-        domain: localhost
+        domain:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false

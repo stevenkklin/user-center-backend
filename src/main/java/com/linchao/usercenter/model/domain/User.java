@@ -1,5 +1,6 @@
 package com.linchao.usercenter.model.domain;
 
+import com.alibaba.excel.annotation.ExcelProperty;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
@@ -22,17 +23,19 @@ public class User implements Serializable {
     /**
      * 用户昵称
      */
+    @ExcelProperty("成员编号")
     private String username;
 
     /**
      * 账号
-
      */
+    @ExcelProperty("成员账号")
     private String userAccount;
 
     /**
      * 用户头像
      */
+    @ExcelProperty("成员头像地址")
     private String avatarUrl;
 
     /**

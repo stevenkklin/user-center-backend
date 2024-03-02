@@ -1,6 +1,8 @@
 package com.linchao.usercenter.controller;
 
+import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.linchao.usercenter.common.BaseResponse;
 import com.linchao.usercenter.common.ErrorCode;
 import com.linchao.usercenter.common.ResultUtils;
@@ -9,13 +11,17 @@ import com.linchao.usercenter.model.domain.User;
 import com.linchao.usercenter.model.domain.request.UserLoginRequest;
 import com.linchao.usercenter.model.domain.request.UserRegisterRequest;
 import com.linchao.usercenter.service.UserService;
+import com.linchao.usercenter.utils.DownExcel;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Profile;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -137,5 +143,56 @@ public class UserController {
         }
         List<User> userList = userService.searchUserByTags(tagNameList);
         return ResultUtils.success(userList);
+    }
+
+    @GetMapping("/recommend")
+    public BaseResponse<Page<User>> recommendUsers(long pageSize, long pageNum, HttpServletRequest request) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        Page<User> userList = userService.page(new Page<>(pageNum, pageSize), queryWrapper);
+        return ResultUtils.success(userList);
+    }
+
+    //导出为Excel
+    @GetMapping("/get/excel")
+    public void getExcel(HttpServletResponse response) {
+        // 数据库读取数据
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.last("limit 0,10");
+        List<User> list = userService.list(wrapper);
+
+        try {
+            DownExcel.download(response,User.class,list);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        }
+//        String fileName = "D:\\IdeaProjects\\user-center\\src\\main\\resources\\prodExcel.xlsx" + System.currentTimeMillis() + ".xlsx";
+//        // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
+//        // 如果这里想使用03 则 传入excelType参数即可
+//        EasyExcel.write(fileName, User.class)
+//                .sheet("模板")
+//                .doWrite(() -> {
+//                    // 分页查询数据
+//                    return list;
+//                });
+
+//        response.addHeader("Content-Disposition", "attachment;filename=" + System.currentTimeMillis() + "huyuqiao.xlsx" );
+//        response.setContentType("application/vnd.ms-excel;charset=gb2312");
+//        try {
+////            从HttpServletResponse中获取OutputStream输出流
+//            ServletOutputStream outputStream = response.getOutputStream();
+//            /*
+//             * EasyExcel 有多个不同的read方法，适用于多种需求
+//             * 这里调用EasyExcel中通过OutputStream流方式输出Excel的write方法
+//             * 它会返回一个ExcelWriterBuilder类型的返回值
+//             * ExcelWriterBuilde中有一个doWrite方法，会输出数据到设置的Sheet中
+//             */
+//            EasyExcel.write(outputStream, User.class).sheet("测试数据" + System.currentTimeMillis()).doWrite(list);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }
