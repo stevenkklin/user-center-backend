@@ -16,9 +16,11 @@ spring:
     path match:
       matching-strategy: ant_path_matcher
   redis:
-    database: 1
+    database: 0
     host: 47.122.42.174
+#    host: 127.0.0.1
     port: 6379
+#    password: abc123456
     password: ocean
 server:
   port: 8080

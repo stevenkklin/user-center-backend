@@ -1,4 +1,5 @@
 package com.linchao.usercenter.service;
+import java.util.Arrays;
 import java.util.Date;
 
 import com.linchao.usercenter.model.domain.User;
@@ -36,6 +37,7 @@ public class UserInsertTest {
             List<User> userList = new ArrayList<>();
             while (true) {
                 j++;
+
                 User user = new User();
                 user.setUsername("假数据");
                 user.setUserAccount("fakeAccount");
